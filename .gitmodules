@@ -1,0 +1,21 @@
+[submodule "platform"]
+	path = platform
+	url = ../commerce-platform.git
+[submodule "backend"]
+	path = backend
+	url = ../commerce-backend.git
+[submodule "storefront"]
+	path = storefront
+	url = ../commerce-storefront.git
+[submodule "admin"]
+	path = admin
+	url = ../commerce-admin.git
+[submodule "checkout"]
+	path = checkout
+	url = ../commerce-checkout.git
+[submodule "design-system"]
+	path = design-system
+	url = ../design-system.git
+[submodule "agent-workflow-tooling"]
+	path = agent-workflow-tooling
+	url = ../agent-workflow-tooling.git
