@@ -1,8 +1,8 @@
 # Agent instructions
 
 This is the commerce platform, one system of the Reference Systems Lab organization, split across
-several repositories. The [README](README.md) has the big picture. Each project folder has its own `AGENTS.md`, which narrows
-this file and wins when the two conflict.
+several repositories. The [README](README.md) has the big picture. Each project folder has its own
+`AGENTS.md`, which narrows this file and wins when the two conflict.
 
 ## Boundaries
 
