@@ -17,13 +17,16 @@ The storefront is the product; everything else supports it. These are local deve
 each pointed at the machine through a hosts-file entry. A production deployment would use its own
 domain.
 
-| Address                      | Serves                                      |
-| ---------------------------- | ------------------------------------------- |
-| `rsl-commerce.test`          | Customer-facing storefront                  |
-| `api.rsl-commerce.test`      | Backend API                                 |
-| `admin.rsl-commerce.test`    | Restricted administration                   |
-| `checkout.rsl-commerce.test` | Secure checkout and payment                 |
-| `docs.rsl-commerce.test`     | Design system and engineering documentation |
+| Address                      | Serves                                                     |
+| ---------------------------- | ---------------------------------------------------------- |
+| `rsl-commerce.test`          | Customer-facing storefront                                 |
+| `api.rsl-commerce.test`      | Backend API                                                |
+| `admin.rsl-commerce.test`    | Restricted administration                                  |
+| `checkout.rsl-commerce.test` | Secure checkout and payment                                |
+| `docs.rsl-commerce.test`     | Engineering documentation                                  |
+| `design.rsl-commerce.test`   | Design system documentation                                |
+| `mail.rsl-commerce.test`     | Mailpit: every email the platform sends, caught locally    |
+| `observe.rsl-commerce.test`  | Grafana: logs, metrics and traces, locally                 |
 
 ## Repositories
 
@@ -62,10 +65,17 @@ infrastructure, dozens of tiny services, and event sourcing where a table will d
 
 ## Local versus production
 
-Locally, containers stand in for the database, cache, message broker, mail and search. In production
-each would be a managed service. The applications cannot tell the difference, and that is the point.
+Locally, containers stand in for the database, cache, message broker, mail and search: PostgreSQL,
+Valkey (Redis-compatible), RabbitMQ, Mailpit and Meilisearch. In production each would be a managed
+service. The applications cannot tell the difference, and that is the point.
 The local setup does not claim to be production infrastructure. It runs the same application
 architecture on convenient local services.
+
+## Decisions
+
+The decisions that hold across repositories are recorded in [`docs/adr`](docs/adr): the
+[Node.js runtime and npm](docs/adr/0001-node-runtime-and-npm.md) and the
+[container baseline](docs/adr/0002-container-baseline.md). Each repository records its own.
 
 ## Git hooks
 
