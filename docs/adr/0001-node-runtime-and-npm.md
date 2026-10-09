@@ -1,6 +1,6 @@
 # 1. Node.js LTS with a hardened npm
 
-- **Status:** Accepted
+- **Status:** Accepted; amended 2026-10-09 (our own scope is exempt from the release-age window)
 - **Date:** 2026-10-08
 
 ## Context
@@ -23,7 +23,9 @@ hours. The research is commerce#3 (RQ-1, findings F1-F12), decided as DE-2.
   in CI or images. Every repository's `.npmrc` hardens it:
   - `strict-allow-scripts`, with an explicit `allowScripts` policy, so no dependency's install
     script runs unless it is named;
-  - `min-release-age=7`, so a release is installable only after a week;
+  - `min-release-age=7`, so a release is installable only after a week, except our own packages:
+    `min-release-age-exclude[]=@reference-systems-lab/*` in every repository that installs them
+    (amended 2026-10-09, below);
   - `allow-git=none` and `allow-remote=none`, so dependencies come only from the registry;
   - `engine-strict`.
 - **Later:** move to npm 12, which blocks lifecycle scripts by default, once Dependabot lists it.
@@ -49,4 +51,10 @@ hours. The research is commerce#3 (RQ-1, findings F1-F12), decided as DE-2.
   code.
 - Fresh releases wait a week. Taking an urgent security fix sooner is a deliberate exception,
   reviewed in its pull request.
+- Our own packages (`@reference-systems-lab/*`: the design-system packages and the backend's SDK) are
+  exempt from that week. Without the exemption, each release would be unusable by the other
+  repositories for seven days: the first design-system release, 0.1.0, failed to install with
+  `notarget` (Reference-Systems-Lab/design-system#2). They are built from our repositories, pinned by
+  lockfile hash and carry build-provenance attestations, which is what the waiting period otherwise
+  protects against for third-party packages.
 - Moving to Node 26 is one `engines` change and an image update per repository.
