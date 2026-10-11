@@ -19,6 +19,7 @@ hours. The research is commerce#3 (RQ-1, findings F1-F12), decided as DE-2.
 
 - **Runtime:** Node.js LTS in every JavaScript repository: Node 24 now, and Node 26 once it
   becomes LTS on 2026-10-28 (supported to 2029-04-30). `engines` and `engine-strict` enforce it.
+  Amended 2026-10-11: Node 26 now, ahead of its LTS date (see Amendments).
 - **Package manager:** the npm bundled with that Node, installed with `npm ci`, never `npm install`
   in CI or images. Every repository's `.npmrc` hardens it:
   - `strict-allow-scripts`, with an explicit `allowScripts` policy, so no dependency's install
@@ -50,3 +51,12 @@ hours. The research is commerce#3 (RQ-1, findings F1-F12), decided as DE-2.
 - Fresh releases wait a week. Taking an urgent security fix sooner is a deliberate exception,
   reviewed in its pull request.
 - Moving to Node 26 is one `engines` change and an image update per repository.
+
+## Amendments
+
+- **2026-10-11:** every JavaScript repository moves to Node 26 now, rather than when it becomes LTS on
+  2026-10-28 (@ABilenduke; Reference-Systems-Lab/commerce#11).
+  - The storefront's image already ran Node 26, because its runtime base publishes only the newest
+    Node (commerce-storefront#2 D-26), so development and CI now match production.
+  - Until 2026-10-28, Node 26 is a Current release rather than LTS.
+  - Each repository moved its `engines`, `.nvmrc` and CI in its own pull request, linked from commerce#11.
