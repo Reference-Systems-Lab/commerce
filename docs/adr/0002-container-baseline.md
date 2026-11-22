@@ -52,3 +52,10 @@ decided as DE-5.
   read-only error during development rather than in production.
 - Health checks run as exec-form commands the image already contains, because there is no shell or
   curl to call. Each application's ADR says how its own check works.
+
+## Amendment, 2026-10-31
+
+Postgres and Valkey now run on Docker Hardened Images, chosen for their scan results on the platform
+(commerce-platform#20, its ADR 0001). That accepts the `dhi.io` login this ADR's alternatives named as
+the cost, for those two services only. Application images keep this baseline: their scans already pass
+at high, and the hardened `node:26` would not.
